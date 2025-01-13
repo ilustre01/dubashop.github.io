@@ -17,6 +17,7 @@ function cargarProductos(productosAMostrar) {
                         </div>
                         <span class="heart-icon" onclick="toggleLike(this)">♡</span>
                     </div>
+                    <div class="product-description">${producto.descripcion}</div>
                     <a href="https://wa.me/5353160585?text=Estoy%20interesado%20en%20comprar%20el%20producto%20${encodeURIComponent(producto.nombre)}" class="buy-button">Comprar</a>
                 </div>
             </div>
@@ -33,7 +34,7 @@ function filtrarProductos(categoria) {
     let productos = JSON.parse(localStorage.getItem('productos')) || [];
     console.log('Productos cargados:', productos);
     if (categoria === 'inicio') {
-        return productos.slice(0, 20);
+        return productos;  // Retorna todos los productos en lugar de solo los primeros 20
     } else {
         return productos.filter(producto => producto.categoria === categoria || producto.subcategoria === categoria);
     }

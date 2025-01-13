@@ -26,46 +26,57 @@
 
         <div id="admin-panel" style="display: none;">
             <nav>
-                <button id="add-product-btn" class="btn">Añadir Producto</button>
+                <button id="add-product-btn" class="btn active">Añadir Producto</button>
                 <button id="view-products-btn" class="btn">Ver Productos</button>
+                <button id="delete-old-products-btn" class="btn">Eliminar Productos Viejos</button>
             </nav>
 
             <div id="add-product-form">
                 <h2>Añadir Nuevo Producto</h2>
                 <form id="product-form">
-                    <div class="input-group">
-                        <input type="text" id="nombre" required>
-                        <label for="nombre">Nombre del producto</label>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <input type="text" id="nombre" required>
+                            <label for="nombre">Nombre del producto</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="number" id="precio" step="0.01" required>
+                            <label for="precio">Precio</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <select id="categoria" required>
+                                <option value="">Seleccione una categoría</option>
+                                <option value="Ferreteria">Ferreteria</option>
+                                <option value="Aseo">Aseo</option>
+                                <option value="Utiles del Hogar">Utiles del Hogar</option>
+                                <option value="Ropa Zapatos">Ropa Zapatos</option>
+                                <option value="Otros">Otros</option>
+                                <option value="nuevas-llegadas">Nuevas Llegadas</option>
+                                <option value="mas-vendidos">Más Vendidos</option>
+                                <option value="ofertas-especiales">Ofertas Especiales</option>
+                            </select>
+                            <label for="categoria">Categoría</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="subcategoria">
+                            <label for="subcategoria">Subcategoría (opcional)</label>
+                        </div>
                     </div>
                     <div class="input-group">
-                        <input type="number" id="precio" step="0.01" required>
-                        <label for="precio">Precio</label>
+                        <textarea id="descripcion" required></textarea>
+                        <label for="descripcion">Descripción</label>
                     </div>
-                    <div class="input-group">
-                        <select id="categoria" required>
-                            <option value="">Seleccione una categoría</option>
-                            <option value="collares">Collares</option>
-                            <option value="aretes">Aretes</option>
-                            <option value="pulseras">Pulseras</option>
-                            <option value="Colgantes">Colgantes</option>
-                            <option value="Arte Yoruba">Arte Yoruba</option>
-                            <option value="nuevas-llegadas">Nuevas Llegadas</option>
-                            <option value="mas-vendidos">Más Vendidos</option>
-                            <option value="ofertas-especiales">Ofertas Especiales</option>
-                        </select>
-                        <label for="categoria">Categoría</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" id="subcategoria">
-                        <label for="subcategoria">Subcategoría (opcional)</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="file" id="imagen" accept="image/*" required>
-                        <label for="imagen">Imagen del producto</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="descuento">
-                        <label for="descuento">Aplicar descuento del 10%</label>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <input type="file" id="imagen" accept="image/*" required>
+                            <label for="imagen">Imagen del producto</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="descuento">
+                            <label for="descuento">Aplicar descuento del 10%</label>
+                        </div>
                     </div>
                     <button type="submit" class="btn">Añadir Producto</button>
                 </form>
@@ -75,9 +86,19 @@
                 <h2>Productos Existentes</h2>
                 <div id="product-items"></div>
             </div>
+
+            <div id="delete-old-products" style="display: none;">
+                <h2>Eliminar Productos Viejos</h2>
+                <p>Seleccione la fecha límite para eliminar productos más antiguos:</p>
+                <input type="date" id="delete-date" required>
+                <button id="confirm-delete" class="btn">Eliminar Productos Antiguos</button>
+            </div>
         </div>
     </div>
+
+    <div id="toast" class="toast"></div>
 
     <script src="admin.js"></script>
 </body>
 </html>
+
